@@ -58,3 +58,28 @@ from selenium import webdriver
 opts = webdriver.ChromeOptions()
 opts.headless =True
 driver =webdriver.Chrome(ChromeDriverManager().install())
+
+
+
+# Create empty lists for the features
+processors=[]
+ram=[]
+os=[]
+storage=[]
+inches=[]
+warranty=[]
+for i in range(0,len(commonclass)):
+    p=commonclass[i].text # Extracting the text from the tags
+    if("Core" in p): 
+        processors.append(p)
+    elif("RAM" in p): 
+        ram.append(p)
+# If RAM is present in the text then append it to the ram list. Similarly do this for the other features as well
+    elif("HDD" in p or "SSD" in p):
+        storage.append(p)
+    elif("Operating" in p):
+        os.append(p)
+    elif("Display" in p):
+        inches.append(p)
+    elif("Warranty" in p):
+        warranty.append(p)
